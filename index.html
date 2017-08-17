@@ -72,9 +72,10 @@
 var q1inview = new Waypoint.Inview({
   element: document.getElementById("q1"),
   enter: function(direction) {
-    elemEnter("q1");
+
   },
   entered: function(direction) {
+    elemEnter("q1");
     //notify('Entered triggered with direction ' + direction)
   },
   exit: function(direction) {
