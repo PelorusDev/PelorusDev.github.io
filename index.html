@@ -75,6 +75,7 @@ var q1inview = new Waypoint.Inview({
 
   },
   entered: function(direction) {
+    document.getElementById("q2i").classList.remove("active")
     elemEnter("q1");
     //notify('Entered triggered with direction ' + direction)
   },
