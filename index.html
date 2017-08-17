@@ -10,9 +10,9 @@ body {
 }
 
 header {
-    position: relative;
-    //top: 0;
-    //left: 0;
+    position: fixed;//relative
+    top: 0;
+    left: 0;
     width: 100%;
     background-color: #1A2E66;
     height: 10%;
@@ -127,7 +127,15 @@ button {
     background-color: #c4252a;
 }
 </style>
+
+<script src="noframework.waypoints.min.js"></script>
+<script src="inview.min.js"></script>
+
+
+
 </head>
+
+
 
 <body>
     <header>
@@ -149,34 +157,34 @@ button {
     <div class="questioneer">
 
         <div class="q-icons">
-            <div class="q-icon done">
+            <div class="q-icon" id="q1i">
 
             </div>
-            <div class="q-icon active">
+            <div class="q-icon" id="q2i">
 
             </div>
-            <div class="q-icon">
+            <div class="q-icon" id="q3i">
 
             </div>
-            <div class="q-icon">
+            <div class="q-icon" id="q4i">
 
             </div>
-            <div class="q-icon">
+            <div class="q-icon" id="q5i">
 
             </div>
         </div>
 
     <form id="q" action="result.html" method="get">
         <ol class="questions">
-            <li class="question">
+            <li class="question" id="q1">
                 <label>How many are working at your company?</label>
                 <input type="number" name="workers" min="1" max="10" value="1"/>
             </li>
-            <li class="question">
+            <li class="question" id="q2">
                 <label>How much does you company make?</label>
                 <input type="number" name="income" min="1" max="10" value="1"/>
             </li>
-            <li class="question">
+            <li class="question" id="q3">
                 <label>How cool is your company?</label>
                 <input type="number" name="cool" min="1" max="10" value="1"/>
             </li>
@@ -186,4 +194,70 @@ button {
     </form>
     </div>
 </body>
+<script>
+
+var q1inview = new Waypoint.Inview({
+  element: document.getElementById("q1"),
+  enter: function(direction) {
+    elemEnter("q1");
+  },
+  entered: function(direction) {
+    //notify('Entered triggered with direction ' + direction)
+  },
+  exit: function(direction) {
+
+  },
+  exited: function(direction) {
+    elemExit("q1");
+    //notify('Exited triggered with direction ' + direction)
+  }
+})
+
+var q2inview = new Waypoint.Inview({
+  element: document.getElementById("q2"),
+  enter: function(direction) {
+
+  },
+  entered: function(direction) {
+    elemEnter("q2");
+    //notify('Entered triggered with direction ' + direction)
+  },
+  exit: function(direction) {
+
+  },
+  exited: function(direction) {
+    elemExit("q2");
+    //notify('Exited triggered with direction ' + direction)
+  }
+})
+
+var q3inview = new Waypoint.Inview({
+  element: document.getElementById("q3"),
+  enter: function(direction) {
+
+  },
+  entered: function(direction) {
+    elemEnter("q3");
+    //notify('Entered triggered with direction ' + direction)
+  },
+  exit: function(direction) {
+
+  },
+  exited: function(direction) {
+    elemExit("q3");
+    //notify('Exited triggered with direction ' + direction)
+  }
+})
+
+
+function elemEnter(elem){
+    document.getElementById(elem+"i").className += " active";
+}
+function elemExit(elem){
+    document.getElementById(elem+"i").classList.remove("active")
+    //Call to check if it was done corretly too
+}
+
+
+</script>
 </html>
